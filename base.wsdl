@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://centralbank.microservice.uniwizard.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Uniwizard.ExchangeRates" targetNamespace="http://centralbank.microservice.uniwizard.com">
+  <types>
+    <xsd:schema targetNamespace="http://centralbank.microservice.uniwizard.com">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </xsd:schema>
+  </types>
+  <portType name="Uniwizard.ExchangeRatesPort">
+    <operation name="setCurrencyCode">
+      <input message="tns:setCurrencyCodeIn"/>
+    </operation>
+    <operation name="setCurrencyNationalBankCode">
+      <input message="tns:setCurrencyNationalBankCodeIn"/>
+    </operation>
+    <operation name="getExchangeRate">
+      <input message="tns:getExchangeRateIn"/>
+    </operation>
+  </portType>
+  <binding name="Uniwizard.ExchangeRatesBinding" type="tns:Uniwizard.ExchangeRatesPort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="setCurrencyCode">
+      <soap:operation soapAction="http://centralbank.microservice.uniwizard.com#setCurrencyCode"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://centralbank.microservice.uniwizard.com"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://centralbank.microservice.uniwizard.com"/>
+      </output>
+    </operation>
+    <operation name="setCurrencyNationalBankCode">
+      <soap:operation soapAction="http://centralbank.microservice.uniwizard.com#setCurrencyNationalBankCode"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://centralbank.microservice.uniwizard.com"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://centralbank.microservice.uniwizard.com"/>
+      </output>
+    </operation>
+    <operation name="getExchangeRate">
+      <soap:operation soapAction="http://centralbank.microservice.uniwizard.com#getExchangeRate"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://centralbank.microservice.uniwizard.com"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://centralbank.microservice.uniwizard.com"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="Uniwizard.ExchangeRatesService">
+    <port name="Uniwizard.ExchangeRatesPort" binding="tns:Uniwizard.ExchangeRatesBinding">
+      <soap:address location="http://centralbank.microservice.uniwizard.com"/>
+    </port>
+  </service>
+  <message name="setCurrencyCodeIn">
+    <part name="code" type="xsd:anyType"/>
+  </message>
+  <message name="setCurrencyNationalBankCodeIn">
+    <part name="code" type="xsd:anyType"/>
+  </message>
+  <message name="getExchangeRateIn"/>
+</definitions>
